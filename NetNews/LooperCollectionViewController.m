@@ -7,92 +7,84 @@
 //
 
 #import "LooperCollectionViewController.h"
+#import "LooperModel.h"
+#import "LooperCollectionViewCell.h"
 
 @interface LooperCollectionViewController ()
-
+@property (nonatomic,strong) NSArray<LooperModel *> *looperList;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 @end
 
 @implementation LooperCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+// 由于self.looperList是通过block传值回调的，所以不能懒加载，需要重写setter刷新数据
+- (void)setLooperList:(NSArray<LooperModel *> *)looperList{
+    _looperList = looperList;
+    
+    [self.collectionView reloadData];
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [LooperModel looperListWithSuccessBlock:^(NSArray *array) {
+        self.looperList = array;
+        
+    } errorBlock:^{
+        NSLog(@"error");
+    }];
+ 
+    // 不能放这里滚，因为viewDidLoad结束时可能还没有looperList（异步回调的）
+//    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+
+    [self setupUI];
+}
+
+- (void)setupUI{
     
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-#pragma mark <UICollectionViewDataSource>
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    self.flowLayout.itemSize = self.collectionView.frame.size;
+    self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.flowLayout.minimumInteritemSpacing = 0;
+    self.flowLayout.minimumLineSpacing = 0;
     
-    // Configure the cell
+    self.collectionView.bounces = NO;
+    self.collectionView.pagingEnabled = YES;
+
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 3;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.looperList.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    LooperCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"looperCollectionCell" forIndexPath:indexPath];
+    
+    cell.tag = indexPath.item;
+    
+    cell.model = self.looperList[indexPath.item];
     
     return cell;
+    
 }
 
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    NSInteger index = scrollView.contentOffset.x / scrollView.bounds.size.width;
+    
+    NSInteger item = index % self.looperList.count;
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:1] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 }
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
-
 @end

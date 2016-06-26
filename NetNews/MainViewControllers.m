@@ -8,8 +8,9 @@
 
 #import "MainViewControllers.h"
 #import "ChannelModel.h"
+#import "ListCollectionViewCell.h"
 
-@interface MainViewControllers ()
+@interface MainViewControllers ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *channelScrollView;
 @property (weak, nonatomic) IBOutlet UICollectionView *listCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
@@ -30,6 +31,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupChannel];
+    
+    self.listCollectionView.dataSource = self;
+    self.listCollectionView.delegate = self;
+    
+
+    self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.flowLayout.minimumLineSpacing = 0;
+    self.flowLayout.minimumInteritemSpacing = 0;
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    self.flowLayout.itemSize = self.listCollectionView.frame.size;
+    
 }
 
 
@@ -57,6 +73,17 @@
     }];
     
     self.channelScrollView.contentSize = CGSizeMake(labelX, self.channelScrollView.frame.size.height);
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.channelList.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    ListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"listCollectionCell" forIndexPath:indexPath];
+    
+    return cell;
 }
 
 @end

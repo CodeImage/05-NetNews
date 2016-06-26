@@ -19,6 +19,9 @@
 		ADE35DF11D1FCC81009B9A4B /* LooperCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35DF01D1FCC81009B9A4B /* LooperCollectionViewController.m */; };
 		ADE35DF31D1FCD99009B9A4B /* topic_news.json in Resources */ = {isa = PBXBuildFile; fileRef = ADE35DF21D1FCD99009B9A4B /* topic_news.json */; };
 		ADE35DF61D1FCDD0009B9A4B /* ChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35DF51D1FCDD0009B9A4B /* ChannelModel.m */; };
+		ADE35DF91D1FDFC2009B9A4B /* ListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35DF81D1FDFC2009B9A4B /* ListCollectionViewCell.m */; };
+		ADE35DFC1D1FE7E9009B9A4B /* LooperModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35DFB1D1FE7E9009B9A4B /* LooperModel.m */; };
+		ADE35DFF1D1FEBCB009B9A4B /* LooperCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35DFE1D1FEBCB009B9A4B /* LooperCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,12 @@
 		ADE35DF21D1FCD99009B9A4B /* topic_news.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = topic_news.json; sourceTree = "<group>"; };
 		ADE35DF41D1FCDD0009B9A4B /* ChannelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelModel.h; sourceTree = "<group>"; };
 		ADE35DF51D1FCDD0009B9A4B /* ChannelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelModel.m; sourceTree = "<group>"; };
+		ADE35DF71D1FDFC2009B9A4B /* ListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCollectionViewCell.h; sourceTree = "<group>"; };
+		ADE35DF81D1FDFC2009B9A4B /* ListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCollectionViewCell.m; sourceTree = "<group>"; };
+		ADE35DFA1D1FE7E9009B9A4B /* LooperModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LooperModel.h; sourceTree = "<group>"; };
+		ADE35DFB1D1FE7E9009B9A4B /* LooperModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LooperModel.m; sourceTree = "<group>"; };
+		ADE35DFD1D1FEBCB009B9A4B /* LooperCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LooperCollectionViewCell.h; sourceTree = "<group>"; };
+		ADE35DFE1D1FEBCB009B9A4B /* LooperCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LooperCollectionViewCell.m; sourceTree = "<group>"; };
 		CD81890A237D80324C8136A5 /* Pods-NetNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetNews/Pods-NetNews.debug.xcconfig"; sourceTree = "<group>"; };
 		F681D3318C6AC8123825B0AF /* Pods-NetNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetNews/Pods-NetNews.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +165,8 @@
 		ADE35DE71D1FCBA3009B9A4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ADE35DF71D1FDFC2009B9A4B /* ListCollectionViewCell.h */,
+				ADE35DF81D1FDFC2009B9A4B /* ListCollectionViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -185,6 +196,8 @@
 		ADE35DEA1D1FCBBF009B9A4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ADE35DFD1D1FEBCB009B9A4B /* LooperCollectionViewCell.h */,
+				ADE35DFE1D1FEBCB009B9A4B /* LooperCollectionViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -192,6 +205,8 @@
 		ADE35DEB1D1FCBC3009B9A4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ADE35DFA1D1FE7E9009B9A4B /* LooperModel.h */,
+				ADE35DFB1D1FE7E9009B9A4B /* LooperModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -322,9 +337,12 @@
 			files = (
 				ADE35DD21D1FC5CD009B9A4B /* MainViewControllers.m in Sources */,
 				ADE35DF61D1FCDD0009B9A4B /* ChannelModel.m in Sources */,
+				ADE35DFC1D1FE7E9009B9A4B /* LooperModel.m in Sources */,
 				ADE35DCF1D1FC5CD009B9A4B /* AppDelegate.m in Sources */,
 				ADE35DCC1D1FC5CD009B9A4B /* main.m in Sources */,
 				ADE35DEE1D1FCC65009B9A4B /* ListTableViewController.m in Sources */,
+				ADE35DFF1D1FEBCB009B9A4B /* LooperCollectionViewCell.m in Sources */,
+				ADE35DF91D1FDFC2009B9A4B /* ListCollectionViewCell.m in Sources */,
 				ADE35DF11D1FCC81009B9A4B /* LooperCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
