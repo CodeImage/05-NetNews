@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <AFNetworkActivityIndicatorManager.h>
+
 
 @interface AppDelegate ()
 
@@ -16,7 +18,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    
+    // 使用AFN设置网络指示器
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
+//    [[AFNetworkActivityIndicatorManager sharedManager] setNetworkingActivityActionWithBlock:^(BOOL networkActivityIndicatorVisible) {
+//        networkActivityIndicatorVisible = YES;
+//    }];
+    
+    // 在Caches/netNews中存放的是db格式的
+    NSURLCache *urlCache = [[NSURLCache alloc]initWithMemoryCapacity:0 diskCapacity:1024 * 1025 *5 diskPath:@"netNews"];
+    [NSURLCache setSharedURLCache:urlCache];
+    
     return YES;
 }
 
