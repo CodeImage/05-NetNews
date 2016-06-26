@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ListTableViewController.h
 //  NetNews
 //
 //  Created by JackLou on 6/26/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ListTableViewController : UITableViewController
 
 @end
-
