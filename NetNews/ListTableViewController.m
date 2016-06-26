@@ -38,11 +38,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell1" forIndexPath:indexPath];
+    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[NewsTableViewCell getReuseIdentifyWithNewsModel:self.newsList[indexPath.row]] forIndexPath:indexPath];
     
     cell.model = self.newsList[indexPath.row];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [NewsTableViewCell getRowHeightWithNewsModel:self.newsList[indexPath.row]];
 }
 
 

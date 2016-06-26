@@ -11,4 +11,7 @@
 
 @interface NewsTableViewCell : UITableViewCell
 @property (nonatomic,strong) NewsModel *model;
+
++ (NSString *)getReuseIdentifyWithNewsModel:(NewsModel *)model;
++ (CGFloat)getRowHeightWithNewsModel:(NewsModel *)model;
 @end

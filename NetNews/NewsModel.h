@@ -15,6 +15,9 @@
 @property (nonatomic,copy) NSString *source;
 @property (nonatomic,strong) NSNumber *replyCount;
 
+@property (nonatomic,strong) NSNumber *imgType;
+@property (nonatomic,strong) NSArray *imgextra;
+
 + (instancetype)newsModelWithDict:(NSDictionary *)dict;
 
 + (void)newsListWithSuccessBlock:(void(^)(NSArray *))successBlock errorBlock:(void(^)())errorBlock;

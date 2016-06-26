@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *digestLabel;
 @property (weak, nonatomic) IBOutlet UILabel *replyCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *imgextra;
 
 @end
 
@@ -33,6 +34,14 @@
     
     self.sourceLabel.text = model.source;
     
+    if (model.imgextra) {
+        [model.imgextra enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            [self.imgextra[idx] sd_setImageWithURL:[NSURL URLWithString:obj[@"imgsrc"]]];
+            
+        }];
+    }
+    
     //iOS7可能需要手动刷新一下控件的自动布局(iOS9也必须刷新，否则出现第一次加载不隐藏digest)
     [self.titleLabel layoutIfNeeded];
 }
@@ -44,6 +53,30 @@
     if (titleWidth > self.titleLabel.bounds.size.width) {
         self.digestLabel.hidden = YES;
     }
+}
+
++ (NSString *)getReuseIdentifyWithNewsModel:(NewsModel *)model{
+    NSString *identifier = @"newsCell1";
+    if (model.imgType) {
+        identifier = @"newsCell2";
+    }else if (model.imgextra){
+        identifier = @"newsCell3";
+    }
+    
+    return identifier;
+}
+
++ (CGFloat)getRowHeightWithNewsModel:(NewsModel *)model{
+
+    CGFloat rowHeight = 100;
+    
+    if (model.imgType) {
+        rowHeight = 160;
+    }else if (model.imgextra){
+        rowHeight = 150;
+    }
+    
+    return rowHeight;
 }
 
 @end
