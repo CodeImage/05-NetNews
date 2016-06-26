@@ -8,6 +8,7 @@
 
 #import "LooperModel.h"
 #import <AFNetworking.h>
+#import "LJNetworkManager.h"
 
 @implementation LooperModel
 + (instancetype)looperModelWithDict:(NSDictionary *)dict{
@@ -20,10 +21,14 @@
 
 + (void)looperListWithSuccessBlock:(void(^)(NSArray *))successBlock errorBlock:(void(^)())errorBlock{
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    LJNetworkManager *manager = [LJNetworkManager sharedManager];
     
     NSMutableArray *mutableArr = [NSMutableArray array];
     
+    
+    // @"http://c.m.163.com/nc/ad/headline/0-4.html"已经有了baseURL，所以省略了部分URL
     [manager GET:@"http://c.m.163.com/nc/ad/headline/0-4.html" parameters:nil progress:NULL success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSDictionary *dict = responseObject;

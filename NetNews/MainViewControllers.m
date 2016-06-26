@@ -34,6 +34,7 @@
     
     self.listCollectionView.dataSource = self;
     self.listCollectionView.delegate = self;
+    self.listCollectionView.pagingEnabled = YES;
     
 
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;

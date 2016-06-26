@@ -22,6 +22,9 @@
 		ADE35DF91D1FDFC2009B9A4B /* ListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35DF81D1FDFC2009B9A4B /* ListCollectionViewCell.m */; };
 		ADE35DFC1D1FE7E9009B9A4B /* LooperModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35DFB1D1FE7E9009B9A4B /* LooperModel.m */; };
 		ADE35DFF1D1FEBCB009B9A4B /* LooperCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35DFE1D1FEBCB009B9A4B /* LooperCollectionViewCell.m */; };
+		ADE35E031D2001F4009B9A4B /* LJNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35E021D2001F4009B9A4B /* LJNetworkManager.m */; };
+		ADE35E061D2015CC009B9A4B /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35E051D2015CC009B9A4B /* NewsTableViewCell.m */; };
+		ADE35E091D2015E4009B9A4B /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE35E081D2015E4009B9A4B /* NewsModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,12 @@
 		ADE35DFB1D1FE7E9009B9A4B /* LooperModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LooperModel.m; sourceTree = "<group>"; };
 		ADE35DFD1D1FEBCB009B9A4B /* LooperCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LooperCollectionViewCell.h; sourceTree = "<group>"; };
 		ADE35DFE1D1FEBCB009B9A4B /* LooperCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LooperCollectionViewCell.m; sourceTree = "<group>"; };
+		ADE35E011D2001F4009B9A4B /* LJNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNetworkManager.h; sourceTree = "<group>"; };
+		ADE35E021D2001F4009B9A4B /* LJNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNetworkManager.m; sourceTree = "<group>"; };
+		ADE35E041D2015CC009B9A4B /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
+		ADE35E051D2015CC009B9A4B /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
+		ADE35E071D2015E4009B9A4B /* NewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
+		ADE35E081D2015E4009B9A4B /* NewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		CD81890A237D80324C8136A5 /* Pods-NetNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetNews/Pods-NetNews.debug.xcconfig"; sourceTree = "<group>"; };
 		F681D3318C6AC8123825B0AF /* Pods-NetNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetNews/Pods-NetNews.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +113,7 @@
 		ADE35DC91D1FC5CD009B9A4B /* NetNews */ = {
 			isa = PBXGroup;
 			children = (
+				ADE35E001D2001C7009B9A4B /* Tool */,
 				ADE35DE51D1FCB7E009B9A4B /* List */,
 				ADE35DE31D1FCB5C009B9A4B /* Main */,
 				ADE35DE41D1FCB71009B9A4B /* Others */,
@@ -198,6 +208,8 @@
 			children = (
 				ADE35DFD1D1FEBCB009B9A4B /* LooperCollectionViewCell.h */,
 				ADE35DFE1D1FEBCB009B9A4B /* LooperCollectionViewCell.m */,
+				ADE35E041D2015CC009B9A4B /* NewsTableViewCell.h */,
+				ADE35E051D2015CC009B9A4B /* NewsTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -207,8 +219,19 @@
 			children = (
 				ADE35DFA1D1FE7E9009B9A4B /* LooperModel.h */,
 				ADE35DFB1D1FE7E9009B9A4B /* LooperModel.m */,
+				ADE35E071D2015E4009B9A4B /* NewsModel.h */,
+				ADE35E081D2015E4009B9A4B /* NewsModel.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		ADE35E001D2001C7009B9A4B /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				ADE35E011D2001F4009B9A4B /* LJNetworkManager.h */,
+				ADE35E021D2001F4009B9A4B /* LJNetworkManager.m */,
+			);
+			name = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,10 +362,13 @@
 				ADE35DF61D1FCDD0009B9A4B /* ChannelModel.m in Sources */,
 				ADE35DFC1D1FE7E9009B9A4B /* LooperModel.m in Sources */,
 				ADE35DCF1D1FC5CD009B9A4B /* AppDelegate.m in Sources */,
+				ADE35E091D2015E4009B9A4B /* NewsModel.m in Sources */,
 				ADE35DCC1D1FC5CD009B9A4B /* main.m in Sources */,
 				ADE35DEE1D1FCC65009B9A4B /* ListTableViewController.m in Sources */,
 				ADE35DFF1D1FEBCB009B9A4B /* LooperCollectionViewCell.m in Sources */,
 				ADE35DF91D1FDFC2009B9A4B /* ListCollectionViewCell.m in Sources */,
+				ADE35E061D2015CC009B9A4B /* NewsTableViewCell.m in Sources */,
+				ADE35E031D2001F4009B9A4B /* LJNetworkManager.m in Sources */,
 				ADE35DF11D1FCC81009B9A4B /* LooperCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
